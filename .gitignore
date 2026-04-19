@@ -26,4 +26,24 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+
+# Models - only keep latest
+models/isolation_forest_v*.pkl
+#Allow fraud_detector_latest.pkl
+
+# Data - large files
+*.csv
+# Allow specific training data
+!data/fraud_training_data.csv
+
+# Logs
+*.log
+
+# Environment
+.env
+*.env
+
+# Database
+*.db
+*.sqlite
 EOF
