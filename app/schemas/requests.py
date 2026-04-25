@@ -7,14 +7,20 @@ class FraudDetectionRequest(BaseModel):
     transaction_amount: float = Field(..., gt=0, description="Transaction amount (must be positive)", example=50000.0)
     location: Optional[str] = Field(None, description="Transaction location", example="Nigeria")
     time_of_day: Optional[str] = Field(None, description="Time of transaction (HH:MM:SS)", example="03:00:00")
+    customer_age: Optional[int] = Field(35, description="Customer age (default 35)")
+    day_of_week: Optional[int] = Field(2, description="Day of week 0=Mon, 6=Sun (default Tuesday)")
+    transaction_velocity: Optional[int] = Field(3, description="Transactions in last 24h (default 3)")
     
     class Config:
         json_schema_extra = {
             "example": {
                 "customer_id": "abc-123",
-                "transaction_amount": 50000,
+                "transaction_amount": 150000,
                 "location": "Nigeria",
-                "time_of_day": "03:00:00"
+                "time_of_day": "03:30",
+                "customer_age": 25,
+                "day_of_week": 6,
+                "transaction_velocity": 15
             }
         }
 
